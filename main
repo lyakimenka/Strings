@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+void welcome()
+{
+	cout << "\n\t\tWelcome to the Business Sorting Program!" << endl;
+}
+
+void sort_business(vector<string> businesses)
+{
+	cout << "\nNames you have entered in alphabetical order: ";
+
+	for (int u = 0; u < businesses.size(); u++)
+	{
+		sort(businesses.begin(), businesses.end());
+
+		cout << "\n" << businesses[u];
+	}
+}
+
+int main()
+{
+	string answer{ 0 };
+	vector<string> businesses;
+	int i = 0;
+	string business;
+
+	welcome();
+
+	while (answer != "n")
+	{
+		cout << "\n\nEnter business name " << endl;
+		getline(cin, business);
+		cout << "\nAnother business? " << endl;
+		getline(cin, answer);
+		answer[0] = tolower(answer[0]);
+		businesses.push_back(business);
+		sort_business(businesses);
+		if (answer == "n")
+		{
+			cout << "\n\nThank you, have a good day! " << endl;
+			break;
+		}
+	}
+	return 0;
+}
